@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://jebuwpexyuk1"]
+
+[ext_resource type="PackedScene" uid="uid://b1vphu661ay2o" path="res://FrontViewWorld.tscn" id="1_dxexb"]
+[ext_resource type="PackedScene" uid="uid://dlcc4v78yye8s" path="res://TopViewWorld.tscn" id="2_wpqt1"]
+
+[node name="Screen" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftScreen" type="SubViewportContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/HBoxContainer/LeftScreen"]
+handle_input_locally = false
+size = Vector2i(574, 648)
+render_target_update_mode = 4
+
+[node name="FrontViewWorld" parent="Control/HBoxContainer/LeftScreen/SubViewport" instance=ExtResource("1_dxexb")]
+
+[node name="RightScreen" type="SubViewportContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/HBoxContainer/RightScreen"]
+handle_input_locally = false
+size = Vector2i(574, 648)
+render_target_update_mode = 4
+
+[node name="TopViewWorld" parent="Control/HBoxContainer/RightScreen/SubViewport" instance=ExtResource("2_wpqt1")]
